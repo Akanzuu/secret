@@ -16,10 +16,14 @@ app.get('/', (req, res) => {
     res.status(403).end()
   });
 
-  
-app.get('/fc/gt2/public_key/:key/:proxy', (req, res) => {
-    
-    const proxy = req.params.proxy.split(":")
+app.post('/arkose-proxy', (req, res) => {
+    const bda = req.query.bda
+    const public_key = req.query.public_key
+    const userbrowser = req.query.userbrowser
+    const language = req.query.language
+    const rnd = req.query.rnd
+    const blob = req.query.data.blob
+    const proxy = req.query.proxy.split(":")
     axios({
         method: 'get',
         url: 'https://roblox-api.arkoselabs.com/fc/gt2/public_key/' + req.params.key,
@@ -41,14 +45,14 @@ app.get('/fc/gt2/public_key/:key/:proxy', (req, res) => {
             }
           },
           params: {
-            bda: encodeURI(req.query.bda),
-            public_key: req.query.public_key ,
+            bda: encodeURI(bda),
+            public_key: public_key,
             site: "https://www.roblox.com" ,
-            userbrowser: encodeURI(req.query.userbrowser) ,
-            language: req.query.language ,
-            rnd: req.query.rnd ,
+            userbrowser: encodeURI(userbrowser),
+            language: language,
+            rnd: rnd,
             data: {
-                blob: encodeURI(req.query.data.blob) ,
+                blob: encodeURI(blob) ,
             }
         }
       }).then(function (response) {
