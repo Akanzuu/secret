@@ -26,7 +26,7 @@ app.post('/arkose-proxy', (req, res) => {
     const proxy = req.query.proxy.split(":")
     axios({
         method: 'get',
-        url: 'https://roblox-api.arkoselabs.com/fc/gt2/public_key/' + req.params.key,
+        url: 'https://roblox-api.arkoselabs.com/fc/gt2/public_key/476068BF-9607-4799-B53D-966BE98E2B81',
         headers: {
             'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
             'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36',
